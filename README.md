@@ -16,7 +16,7 @@ O projeto será evoluído futuramente para uma API REST utilizando Spring Boot.
 - GitHub
 
 ## Como executar o projeto
-- Clonar o repositório
+- Clonar o repositorio
 - Abrir o projeto em uma IDE Java (IntelliJ, Eclipse ou VS Code)
 - Executar a classe `Main.java`
 
