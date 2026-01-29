@@ -11,7 +11,7 @@ public class Main {
 
             do{
                 System.out.println("\n=== SISTEMA DE EVENTOS ===");
-                System.out.println("1 - Castrar evento");
+                System.out.println("1 - Cadastrar evento");
                 System.out.println("2 - Listar eventos");
                 System.out.println("3 - Remover evento");
                 System.out.println("0 - Sair");
@@ -63,4 +63,5 @@ public class Main {
         }
             
     }
+}
     
