@@ -46,8 +46,9 @@ public class Main {
                         if (eventos.isEmpty()){
                             System.out.println("nenhum evento cadastrado.");
                         } else {
-                            for (Eventos e : eventos){
-                                System.out.println("Nome: " + e.nome);
+                            for (int i = 0; i < eventos.size(); i++) {
+                                Eventos e = eventos.get(i);
+                                System.out.println((i + 1) + " - " + e.nome);
                                 System.out.println("Local: " + e.local);
                                 System.out.println("Data: " + e.data);
                                 System.out.println("Cache: " + e.cache);
@@ -55,7 +56,26 @@ public class Main {
                             }
                         }
                     }
-                    case 3 -> System.out.println("Remoção de evento (Em desenvolvimento)");
+                    case 3 -> {
+                        if (eventos.isEmpty()) {
+                            System.out.println("Nenhum evento para remover.");
+                        } else {
+
+                            for (int i = 0; i < eventos.size(); i++) {
+                                System.out.println((i + 1) + " - " + eventos.get(i).nome);
+                }
+
+                            System.out.println("Digite o número do evento que deseja remover:");
+                                 int indice = scanner.nextInt();
+
+                        if (indice > 0 && indice <= eventos.size()) {
+                            eventos.remove(indice - 1);
+                                System.out.println("Evento removido com sucesso!");
+                        } else {
+                            System.out.println("Número inválido.");
+        }
+    }
+}
                     case 0 -> System.out.println("Saindo do sistema...");
                     default -> System.out.println("Opção Invalida");
                 }
