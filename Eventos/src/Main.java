@@ -6,21 +6,21 @@ public class Main {
 
         try (Scanner scanner = new Scanner(System.in)) {
             int opcao;
-            
-                ArrayList<Eventos> eventos = new ArrayList<>();
 
-            do{
+            ArrayList<Eventos> eventos = new ArrayList<>();
+
+            do {
                 System.out.println("\n=== SISTEMA DE EVENTOS ===");
                 System.out.println("1 - Cadastrar evento");
                 System.out.println("2 - Listar eventos");
                 System.out.println("3 - Remover evento");
                 System.out.println("0 - Sair");
                 System.out.println("Escolha uma opcao: ");
-                
+
                 opcao = scanner.nextInt();
-                
+
                 switch (opcao) {
-                    case 1 ->{
+                    case 1 -> {
                         Eventos evento = new Eventos();
 
                         scanner.nextLine();
@@ -41,47 +41,53 @@ public class Main {
 
                         System.out.println("Evento cadastrado com sucesso!");
 
-                    } 
+                    }
                     case 2 -> {
-                        if (eventos.isEmpty()){
-                            System.out.println("nenhum evento cadastrado.");
+                        if (eventos.isEmpty()) {
+                            System.out.println("Nenhum evento cadastrado.");
                         } else {
+
                             for (int i = 0; i < eventos.size(); i++) {
+
                                 Eventos e = eventos.get(i);
-                                System.out.println((i + 1) + " - " + e.nome);
+
+                                System.out.println("Evento " + (i + 1));
+                                System.out.println("Nome: " + e.nome);
                                 System.out.println("Local: " + e.local);
                                 System.out.println("Data: " + e.data);
                                 System.out.println("Cache: " + e.cache);
                                 System.out.println("--------------------------");
                             }
+
                         }
                     }
                     case 3 -> {
-                        if (eventos.isEmpty()) {
-                            System.out.println("Nenhum evento para remover.");
-                        } else {
 
-                            for (int i = 0; i < eventos.size(); i++) {
-                                System.out.println((i + 1) + " - " + eventos.get(i).nome);
-                }
+                        if (eventos.isEmpty()) {
+
+                            System.out.println("Não há eventos para remover.");
+
+                        } else {
 
                             System.out.println("Digite o número do evento que deseja remover:");
-                                 int indice = scanner.nextInt();
+                            int indice = scanner.nextInt();
 
-                        if (indice > 0 && indice <= eventos.size()) {
-                            eventos.remove(indice - 1);
+                            if (indice > 0 && indice <= eventos.size()) {
+
+                                eventos.remove(indice - 1);
                                 System.out.println("Evento removido com sucesso!");
-                        } else {
-                            System.out.println("Número inválido.");
-        }
-    }
-}
+
+                            } else {
+
+                                System.out.println("Número inválido.");
+                            }
+                        }
+                    }
                     case 0 -> System.out.println("Saindo do sistema...");
                     default -> System.out.println("Opção Invalida");
                 }
             } while (opcao != 0);
         }
-            
+
     }
 }
-    
