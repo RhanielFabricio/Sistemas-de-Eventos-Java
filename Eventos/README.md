@@ -1,18 +1,19 @@
-## Getting Started
+Sistema de Eventos - Java
+Projeto desenvolvido em Java com o objetivo de praticar lógica de programação, orientação a objetos (POO) e versionamento com Git.
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+O projeto será desenvolvido futuramente para uma API REST utilizando Spring Boot.
 
-## Folder Structure
-
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+Funcionalidades
+Cadastro de eventos
+Listagem de eventos
+Remoção de eventos
+Às vezes preparado
+Java
+Git
+GitHub
+Como executar o projeto
+Clonar o repositório
+Abra o projeto em um IDE Java (IntelliJ, Eclipse ou VS Code)
+Executar uma classeMain.java
+Status do projeto
+🚧 Em desenvolvimento
