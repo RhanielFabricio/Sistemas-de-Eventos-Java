@@ -1,19 +1,24 @@
-Sistema de Eventos - Java
-Projeto desenvolvido em Java com o objetivo de praticar lógica de programação, orientação a objetos (POO) e versionamento com Git.
+# Sistema de Eventos - Java
 
-O projeto será desenvolvido futuramente para uma API REST utilizando Spring Boot.
+Projeto desenvolvido em Java com o objetivo de praticar lógica de programação,
+orientação a objetos (POO) e versionamento com Git.
 
-Funcionalidades
-Cadastro de eventos
-Listagem de eventos
-Remoção de eventos
-Às vezes preparado
-Java
-Git
-GitHub
-Como executar o projeto
-Clonar o repositório
-Abra o projeto em um IDE Java (IntelliJ, Eclipse ou VS Code)
-Executar uma classeMain.java
-Status do projeto
+O projeto será evoluído futuramente para uma API REST utilizando Spring Boot.
+
+## Funcionalidades
+- Cadastro de eventos
+- Listagem de eventos
+- Remoção de eventos
+
+## Tecnologias utilizadas
+- Java
+- Git
+- GitHub
+
+## Como executar o projeto
+- Clonar o repositorio
+- Abrir o projeto em uma IDE Java (IntelliJ, Eclipse ou VS Code)
+- Executar a classe `Main.java`
+
+## Status do projeto
 🚧 Em desenvolvimento
