@@ -25,7 +25,6 @@ O projeto será evoluído futuramente para uma API REST utilizando Spring Boot.
 - Programação Orientada a Objetos
 - ArrayList
 - Scanner (entrada de dados)
-- Java
 - Git
 - GitHub
 
