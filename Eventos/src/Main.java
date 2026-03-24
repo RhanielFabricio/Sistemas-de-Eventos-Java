@@ -20,8 +20,8 @@ public class Main {
                 System.out.print("Escolha uma opcao: ");
 
                 opcao = scanner.nextInt();
-                scanner.nextLine(); // limpa ENTER
-
+                scanner.nextLine(); 
+                
                 switch (opcao) {
 
                     case 1 -> {
