@@ -10,11 +10,6 @@ O projeto será evoluído futuramente para uma API REST utilizando Spring Boot.
 - Listagem de eventos
 - Remoção de eventos
 
-## Tecnologias utilizadas
-- Java
-- Git
-- GitHub
-
 ## Como executar o projeto
 - Clonar o repositorio
 - Abrir o projeto em uma IDE Java (IntelliJ, Eclipse ou VS Code)
@@ -30,6 +25,9 @@ O projeto será evoluído futuramente para uma API REST utilizando Spring Boot.
 - Programação Orientada a Objetos
 - ArrayList
 - Scanner (entrada de dados)
+- Java
+- Git
+- GitHub
 
 ## Funcionalidades
 
