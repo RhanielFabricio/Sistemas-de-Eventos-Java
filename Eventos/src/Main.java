@@ -6,9 +6,9 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        String caminho = "C:/Users/Rhani/Documents/Projetos/Sistemas-de-Eventos-Java/Eventos/src/arquivos.txt";
+        String caminho = "arquivos.txt";
 
-        System.out.println(" VERSÃO FINAL RODANDO ");
+        System.out.println("VERSÃO FINAL RODANDO");
         System.out.println("Caminho: " + new File(caminho).getAbsolutePath());
 
         ArrayList<Eventos> eventos = new ArrayList<>();
@@ -33,16 +33,16 @@ public class Main {
                         eventos.add(e);
 
                     } catch (Exception ex) {
-                        System.out.println("Erro ao converter linha: " + linha);
+                        System.out.println("Erro ao ler linha: " + linha);
                     }
                 }
             }
 
-            System.out.println("Eventos carregados: " + eventos.size());
-
         } catch (Exception e) {
-            System.out.println(" Arquivo não encontrado, será criado.");
+            System.out.println("Arquivo não encontrado, será criado.");
         }
+
+        System.out.println("Eventos carregados: " + eventos.size());
 
         try (Scanner scanner = new Scanner(System.in)) {
 
@@ -54,6 +54,8 @@ public class Main {
                 System.out.println("1 - Cadastrar evento");
                 System.out.println("2 - Listar eventos");
                 System.out.println("3 - Remover evento");
+                System.out.println("4 - Editar evento");
+                System.out.println("5 - Buscar evento");
                 System.out.println("0 - Sair");
                 System.out.print("Escolha uma opcao: ");
 
@@ -88,17 +90,13 @@ public class Main {
                         eventos.add(evento);
 
                         try (FileWriter writer = new FileWriter(caminho, true)) {
-
                             writer.write(evento.nome + ";" +
                                     evento.local + ";" +
                                     evento.data + ";" +
                                     evento.cache + "\n");
-
-                        } catch (IOException e) {
-                            System.out.println("Erro ao salvar.");
                         }
 
-                        System.out.println("✅ Evento cadastrado!");
+                        System.out.println("Evento cadastrado!");
                     }
 
                     case 2 -> {
@@ -123,6 +121,7 @@ public class Main {
                             scanner.nextLine();
 
                             if (indice > 0 && indice <= eventos.size()) {
+
                                 eventos.remove(indice - 1);
 
                                 try (FileWriter writer = new FileWriter(caminho)) {
@@ -134,9 +133,89 @@ public class Main {
                                     }
                                 }
 
-                                System.out.println("🗑️ Removido!");
+                                System.out.println("Removido!");
+
                             } else {
                                 System.out.println("Número inválido.");
+                            }
+                        }
+                    }
+
+                    case 4 -> {
+                        if (eventos.isEmpty()) {
+                            System.out.println("Nenhum evento para editar.");
+                        } else {
+
+                            System.out.print("Número do evento: ");
+                            int indice = scanner.nextInt();
+                            scanner.nextLine();
+
+                            if (indice > 0 && indice <= eventos.size()) {
+
+                                Eventos evento = eventos.get(indice - 1);
+
+                                System.out.println("Editando: " + evento.nome);
+
+                                System.out.print("Novo nome: ");
+                                evento.nome = scanner.nextLine();
+
+                                System.out.print("Novo local: ");
+                                evento.local = scanner.nextLine();
+
+                                System.out.print("Nova data: ");
+                                evento.data = scanner.nextLine();
+
+                                System.out.print("Novo cache: ");
+
+                                while (true) {
+                                    try {
+                                        evento.cache = Double.parseDouble(scanner.nextLine());
+                                        break;
+                                    } catch (Exception e) {
+                                        System.out.print("Valor inválido, tenta de novo: ");
+                                    }
+                                }
+
+                                try (FileWriter writer = new FileWriter(caminho)) {
+                                    for (Eventos e : eventos) {
+                                        writer.write(e.nome + ";" +
+                                                e.local + ";" +
+                                                e.data + ";" +
+                                                e.cache + "\n");
+                                    }
+                                }
+
+                                System.out.println("Evento atualizado!");
+
+                            } else {
+                                System.out.println("Número inválido.");
+                            }
+                        }
+                    }
+                    case 5 -> {
+                        if (eventos.isEmpty()) {
+                            System.out.println("Nenhum evento cadastrado.");
+                        } else {
+
+                            System.out.print("Digite o nome para buscar: ");
+                            String busca = scanner.nextLine().toLowerCase();
+
+                            boolean encontrou = false;
+
+                            for (Eventos e : eventos) {
+
+                                if (e.nome.toLowerCase().contains(busca)) {
+
+                                    System.out.println("Encontrado:");
+                                    System.out.println(e);
+                                    System.out.println("------------------");
+
+                                    encontrou = true;
+                                }
+                            }
+
+                            if (!encontrou) {
+                                System.out.println("Nenhum evento encontrado.");
                             }
                         }
                     }
