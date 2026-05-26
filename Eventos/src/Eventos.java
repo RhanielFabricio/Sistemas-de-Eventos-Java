@@ -1,5 +1,4 @@
 public class Eventos {
-
     String nome;
     String local;
     String data;
@@ -10,6 +9,6 @@ public class Eventos {
         return "Nome: " + nome +
                "\nLocal: " + local +
                "\nData: " + data +
-               "\nCache: R$ " + cache;
+               "\nCache: " + cache;
     }
 }

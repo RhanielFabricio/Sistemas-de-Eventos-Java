@@ -8,7 +8,7 @@ public class Main {
 
         String caminho = "arquivos.txt";
 
-        System.out.println("VERSÃO FINAL RODANDO");
+        System.out.println("Sistema de Eventos Dj's");
         System.out.println("Caminho: " + new File(caminho).getAbsolutePath());
 
         ArrayList<Eventos> eventos = new ArrayList<>();
@@ -67,16 +67,50 @@ public class Main {
                     case 1 -> {
                         Eventos evento = new Eventos();
 
-                        System.out.print("Nome: ");
-                        evento.nome = scanner.nextLine();
+                        while (true) {
 
-                        System.out.print("Local: ");
-                        evento.local = scanner.nextLine();
+                            System.out.print("Nome: ");
+                            evento.nome = scanner.nextLine();
+
+                            if (!evento.nome.trim().isEmpty()) {
+                                break;
+                            }
+
+                            System.out.println("Nome não pode ficar vazio.");
+                        }
+
+                        while (true) {
+
+                            System.out.print("Local: ");
+                            evento.local = scanner.nextLine();
+
+                            if (!evento.local.trim().isEmpty()) {
+                                break;
+                            }
+
+                            System.out.println("Local não pode ficar vazio.");
+                        }
 
                         System.out.print("Data: ");
                         evento.data = scanner.nextLine();
 
-                        System.out.print("Cache: ");
+                        while (true) {
+
+                            try {
+
+                                evento.cache = Double.parseDouble(scanner.nextLine());
+
+                                if (evento.cache >= 0) {
+                                    break;
+                                }
+
+                                System.out.print("Cache não pode ser negativo: ");
+
+                            } catch (Exception e) {
+
+                                System.out.print("Valor inválido, tenta de novo: ");
+                            }
+                        }
 
                         while (true) {
                             try {
@@ -122,20 +156,32 @@ public class Main {
 
                             if (indice > 0 && indice <= eventos.size()) {
 
-                                eventos.remove(indice - 1);
+                                System.out.print("Tem certeza que deseja remover? (s/n): ");
+                                String confirmar = scanner.nextLine();
 
-                                try (FileWriter writer = new FileWriter(caminho)) {
-                                    for (Eventos e : eventos) {
-                                        writer.write(e.nome + ";" +
-                                                e.local + ";" +
-                                                e.data + ";" +
-                                                e.cache + "\n");
+                                if (confirmar.equalsIgnoreCase("s")) {
+
+                                    eventos.remove(indice - 1);
+
+                                    try (FileWriter writer = new FileWriter(caminho)) {
+
+                                        for (Eventos e : eventos) {
+                                            writer.write(e.nome + ";" +
+                                                    e.local + ";" +
+                                                    e.data + ";" +
+                                                    e.cache + "\n");
+                                        }
                                     }
+
+                                    System.out.println("Evento removido!");
+
+                                } else {
+
+                                    System.out.println("Remoção cancelada.");
                                 }
 
-                                System.out.println("Removido!");
-
                             } else {
+
                                 System.out.println("Número inválido.");
                             }
                         }
