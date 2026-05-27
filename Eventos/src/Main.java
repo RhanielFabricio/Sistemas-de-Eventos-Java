@@ -133,17 +133,7 @@ public class Main {
                         System.out.println("Evento cadastrado!");
                     }
 
-                    case 2 -> {
-                        if (eventos.isEmpty()) {
-                            System.out.println("Nenhum evento cadastrado.");
-                        } else {
-                            for (int i = 0; i < eventos.size(); i++) {
-                                System.out.println("Evento " + (i + 1));
-                                System.out.println(eventos.get(i));
-                                System.out.println("------------------");
-                            }
-                        }
-                    }
+                    case 2 -> listarEventos(eventos);
 
                     case 3 -> {
                         if (eventos.isEmpty()) {
@@ -272,6 +262,24 @@ public class Main {
                 }
 
             } while (opcao != 0);
+        }
+    }
+
+    public static void listarEventos(ArrayList<Eventos> eventos) {
+
+        if (eventos.isEmpty()) {
+
+            System.out.println("Nenhum evento cadastrado.");
+
+        } else {
+
+            for (int i = 0; i < eventos.size(); i++) {
+
+                System.out.println("====================");
+                System.out.println("🎧 EVENTO " + (i + 1));
+                System.out.println(eventos.get(i));
+                System.out.println("====================");
+            }
         }
     }
 }
