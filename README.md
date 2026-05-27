@@ -1,19 +1,32 @@
-# Sistema de Eventos - Java
+# 🗓️ Sistema de Gerenciamento de Eventos — Java
 
-Projeto desenvolvido em Java com o objetivo de praticar lógica de programação,
-orientação a objetos (POO) e versionamento com Git.
+Aplicação backend desenvolvida em Java com foco em 
+boas práticas de Orientação a Objetos (POO), 
+estruturas de dados e versionamento com Git/GitHub.
 
-O projeto será evoluído futuramente para uma API REST utilizando Spring Boot.
+## 🚀 Tecnologias utilizadas
 
-## Funcionalidades
-- Cadastro de eventos
-- Listagem de eventos
+- Java 8+
+- Programação Orientada a Objetos (POO)
+- ArrayList e Collections
+- Scanner (entrada de dados via terminal)
+- Git / GitHub
+
+## ✅ Funcionalidades
+
+- Cadastro de eventos (nome, local, data e cachê)
+- Listagem de todos os eventos cadastrados
 - Remoção de eventos
+- Validação de entrada de dados
 
-## Como executar o projeto
-- Clonar o repositorio
-- Abrir o projeto em uma IDE Java (IntelliJ, Eclipse ou VS Code)
-- Executar a classe `Main.java`
+## ▶️ Como executar
+
+1. Clone o repositório:
+git clone https://github.com/RhanielFabricio/Sistemas-de-Eventos-Java.git
+
+2. Abra o projeto no VS Code, IntelliJ ou Eclipse
+
+3. Execute a classe `Main.java`
 
 ## 💻 Sistema rodando
 <img width="736" height="302" alt="Menu" src="https://github.com/user-attachments/assets/ae7aa1ba-7b25-4345-99aa-8d5c34847e09" />
@@ -28,12 +41,13 @@ O projeto será evoluído futuramente para uma API REST utilizando Spring Boot.
 - Git
 - GitHub
 
-## Funcionalidades
+## 📌 Próximos passos
 
-- Cadastro de eventos
-- Listagem de eventos
-- Remoção de eventos
-- Validação de entrada de dados
-  
-## Status do projeto
-🚧 Em desenvolvimento
+- Migração para API REST com Spring Boot
+- Integração com banco de dados MySQL
+- Implementação de endpoints CRUD
+
+## 👨‍💻 Autor
+
+Rhaniel Fabricio
+[LinkedIn](https://linkedin.com/in/rhaniel-fabricio-4b065677)
