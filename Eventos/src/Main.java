@@ -64,170 +64,11 @@ public class Main {
 
                 switch (opcao) {
 
-                    case 1 -> {
-                        Eventos evento = new Eventos();
-
-                        while (true) {
-
-                            System.out.print("Nome: ");
-                            evento.nome = scanner.nextLine();
-
-                            if (!evento.nome.trim().isEmpty()) {
-                                break;
-                            }
-
-                            System.out.println("Nome não pode ficar vazio.");
-                        }
-
-                        while (true) {
-
-                            System.out.print("Local: ");
-                            evento.local = scanner.nextLine();
-
-                            if (!evento.local.trim().isEmpty()) {
-                                break;
-                            }
-
-                            System.out.println("Local não pode ficar vazio.");
-                        }
-
-                        System.out.print("Data: ");
-                        evento.data = scanner.nextLine();
-
-                        while (true) {
-
-                            try {
-
-                                evento.cache = Double.parseDouble(scanner.nextLine());
-
-                                if (evento.cache >= 0) {
-                                    break;
-                                }
-
-                                System.out.print("Cache não pode ser negativo: ");
-
-                            } catch (Exception e) {
-
-                                System.out.print("Valor inválido, tenta de novo: ");
-                            }
-                        }
-
-                        while (true) {
-                            try {
-                                evento.cache = Double.parseDouble(scanner.nextLine());
-                                break;
-                            } catch (Exception e) {
-                                System.out.print("Valor inválido, tenta de novo: ");
-                            }
-                        }
-
-                        eventos.add(evento);
-
-                        try (FileWriter writer = new FileWriter(caminho, true)) {
-                            writer.write(evento.nome + ";" +
-                                    evento.local + ";" +
-                                    evento.data + ";" +
-                                    evento.cache + "\n");
-                        }
-
-                        System.out.println("Evento cadastrado!");
-                    }
-
+                    case 1 -> cadastrarEvento(eventos, caminho, scanner);
                     case 2 -> listarEventos(eventos);
+                    case 3 -> removerEvento(eventos, caminho, scanner);
+                    case 4 -> editarEvento(eventos, caminho, scanner);
 
-                    case 3 -> {
-                        if (eventos.isEmpty()) {
-                            System.out.println("Nada pra remover.");
-                        } else {
-
-                            System.out.print("Número do evento: ");
-                            int indice = scanner.nextInt();
-                            scanner.nextLine();
-
-                            if (indice > 0 && indice <= eventos.size()) {
-
-                                System.out.print("Tem certeza que deseja remover? (s/n): ");
-                                String confirmar = scanner.nextLine();
-
-                                if (confirmar.equalsIgnoreCase("s")) {
-
-                                    eventos.remove(indice - 1);
-
-                                    try (FileWriter writer = new FileWriter(caminho)) {
-
-                                        for (Eventos e : eventos) {
-                                            writer.write(e.nome + ";" +
-                                                    e.local + ";" +
-                                                    e.data + ";" +
-                                                    e.cache + "\n");
-                                        }
-                                    }
-
-                                    System.out.println("Evento removido!");
-
-                                } else {
-
-                                    System.out.println("Remoção cancelada.");
-                                }
-
-                            } else {
-
-                                System.out.println("Número inválido.");
-                            }
-                        }
-                    }
-
-                    case 4 -> {
-                        if (eventos.isEmpty()) {
-                            System.out.println("Nenhum evento para editar.");
-                        } else {
-
-                            System.out.print("Número do evento: ");
-                            int indice = scanner.nextInt();
-                            scanner.nextLine();
-
-                            if (indice > 0 && indice <= eventos.size()) {
-
-                                Eventos evento = eventos.get(indice - 1);
-
-                                System.out.println("Editando: " + evento.nome);
-
-                                System.out.print("Novo nome: ");
-                                evento.nome = scanner.nextLine();
-
-                                System.out.print("Novo local: ");
-                                evento.local = scanner.nextLine();
-
-                                System.out.print("Nova data: ");
-                                evento.data = scanner.nextLine();
-
-                                System.out.print("Novo cache: ");
-
-                                while (true) {
-                                    try {
-                                        evento.cache = Double.parseDouble(scanner.nextLine());
-                                        break;
-                                    } catch (Exception e) {
-                                        System.out.print("Valor inválido, tenta de novo: ");
-                                    }
-                                }
-
-                                try (FileWriter writer = new FileWriter(caminho)) {
-                                    for (Eventos e : eventos) {
-                                        writer.write(e.nome + ";" +
-                                                e.local + ";" +
-                                                e.data + ";" +
-                                                e.cache + "\n");
-                                    }
-                                }
-
-                                System.out.println("Evento atualizado!");
-
-                            } else {
-                                System.out.println("Número inválido.");
-                            }
-                        }
-                    }
                     case 5 -> {
                         if (eventos.isEmpty()) {
                             System.out.println("Nenhum evento cadastrado.");
@@ -276,9 +117,225 @@ public class Main {
             for (int i = 0; i < eventos.size(); i++) {
 
                 System.out.println("====================");
-                System.out.println("🎧 EVENTO " + (i + 1));
+                System.out.println("EVENTO " + (i + 1));
                 System.out.println(eventos.get(i));
                 System.out.println("====================");
+            }
+        }
+    }
+
+    public static void cadastrarEvento(
+            ArrayList<Eventos> eventos,
+            String caminho,
+            Scanner scanner) {
+
+        Eventos evento = new Eventos();
+
+        while (true) {
+
+            System.out.print("Nome: ");
+            evento.nome = scanner.nextLine();
+
+            if (!evento.nome.trim().isEmpty()) {
+                break;
+            }
+
+            System.out.println("Nome não pode ficar vazio.");
+        }
+
+        while (true) {
+
+            System.out.print("Local: ");
+            evento.local = scanner.nextLine();
+
+            if (!evento.local.trim().isEmpty()) {
+                break;
+            }
+
+            System.out.println("Local não pode ficar vazio.");
+        }
+
+        System.out.print("Data: ");
+        evento.data = scanner.nextLine();
+
+        System.out.print("Cache: ");
+
+        while (true) {
+
+            try {
+
+                evento.cache = Double.parseDouble(scanner.nextLine());
+
+                if (evento.cache >= 0) {
+                    break;
+                }
+
+                System.out.print("Cache não pode ser negativo: ");
+
+            } catch (Exception e) {
+
+                System.out.print("Valor inválido, tenta de novo: ");
+            }
+        }
+
+        eventos.add(evento);
+
+        try (FileWriter writer = new FileWriter(caminho, true)) {
+
+            writer.write(evento.nome + ";" +
+                    evento.local + ";" +
+                    evento.data + ";" +
+                    evento.cache + "\n");
+
+        } catch (IOException e) {
+
+            System.out.println("Erro ao salvar.");
+        }
+
+        System.out.println("Evento cadastrado!");
+    }
+
+    public static void removerEvento(
+            ArrayList<Eventos> eventos,
+            String caminho,
+            Scanner scanner) {
+
+        if (eventos.isEmpty()) {
+
+            System.out.println("Nada pra remover.");
+
+        } else {
+
+            System.out.print("Número do evento: ");
+            int indice = scanner.nextInt();
+            scanner.nextLine();
+
+            if (indice > 0 && indice <= eventos.size()) {
+
+                System.out.print("Tem certeza que deseja remover? (s/n): ");
+                String confirmar = scanner.nextLine();
+
+                if (confirmar.equalsIgnoreCase("s")) {
+
+                    eventos.remove(indice - 1);
+
+                    try (FileWriter writer = new FileWriter(caminho)) {
+
+                        for (Eventos e : eventos) {
+
+                            writer.write(e.nome + ";" +
+                                    e.local + ";" +
+                                    e.data + ";" +
+                                    e.cache + "\n");
+                        }
+
+                    } catch (IOException e) {
+
+                        System.out.println("Erro ao salvar.");
+                    }
+
+                    System.out.println("Evento removido!");
+
+                } else {
+
+                    System.out.println("Remoção cancelada.");
+                }
+
+            } else {
+
+                System.out.println("Número inválido.");
+            }
+        }
+    }
+
+    public static void editarEvento(
+            ArrayList<Eventos> eventos,
+            String caminho,
+            Scanner scanner) {
+
+        if (eventos.isEmpty()) {
+
+            System.out.println("Nenhum evento para editar.");
+
+        } else {
+
+            System.out.print("Digite o número do evento: ");
+            int indice = scanner.nextInt();
+            scanner.nextLine();
+
+            if (indice > 0 && indice <= eventos.size()) {
+
+                Eventos evento = eventos.get(indice - 1);
+
+                System.out.println("Editando evento: " + evento.nome);
+
+                while (true) {
+
+                    System.out.print("Novo nome: ");
+                    evento.nome = scanner.nextLine();
+
+                    if (!evento.nome.trim().isEmpty()) {
+                        break;
+                    }
+
+                    System.out.println("Nome não pode ficar vazio.");
+                }
+
+                while (true) {
+
+                    System.out.print("Novo local: ");
+                    evento.local = scanner.nextLine();
+
+                    if (!evento.local.trim().isEmpty()) {
+                        break;
+                    }
+
+                    System.out.println("Local não pode ficar vazio.");
+                }
+
+                System.out.print("Nova data: ");
+                evento.data = scanner.nextLine();
+
+                System.out.print("Novo cache: ");
+
+                while (true) {
+
+                    try {
+
+                        evento.cache = Double.parseDouble(scanner.nextLine());
+
+                        if (evento.cache >= 0) {
+                            break;
+                        }
+
+                        System.out.print("Cache não pode ser negativo: ");
+
+                    } catch (Exception e) {
+
+                        System.out.print("Valor inválido, tenta de novo: ");
+                    }
+                }
+
+                try (FileWriter writer = new FileWriter(caminho)) {
+
+                    for (Eventos e : eventos) {
+
+                        writer.write(e.nome + ";" +
+                                e.local + ";" +
+                                e.data + ";" +
+                                e.cache + "\n");
+                    }
+
+                } catch (IOException e) {
+
+                    System.out.println("Erro ao salvar edição.");
+                }
+
+                System.out.println("Evento atualizado!");
+
+            } else {
+
+                System.out.println("Número inválido.");
             }
         }
     }

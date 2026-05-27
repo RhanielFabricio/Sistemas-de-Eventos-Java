@@ -5,3 +5,4 @@ Festa Black;Verena;03/04;500.0
 Festa Black;Verena;03/04;500.0
 Festa do Edgir;Rua Verena;12/02;1000.0
 0;2;99/99/9999;0.0
+Baile do Dj Niel;Rua Verena;03/07/2026;1000.0
